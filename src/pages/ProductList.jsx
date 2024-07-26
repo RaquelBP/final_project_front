@@ -1,22 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import Products from "../components/Products";
+import useProducts from "../hooks/useProducts";
 
 const ProductList = () => {
-    const [products, setProducts] = useState(Products());
-    //const [search, setSearch] = useState("");
+  const products = useProducts()
+  console.log("Productos:", products)
+  //console.log("id:", products[0].product_id)
 
-    //const {oldSearch} = useParams();
-
-    
-
-    return <div>
-      {products.map((product) => (
-          <ProductCard key={product.id} product={product} hasPrice={false} />
-        ))}
+  return (
+    <div>
+      {products.length === 0 ? (
+        <p>Cargando productos...</p>
+      ) : (
+        products.map((product) => (
+          product.product_id && (
+            <ProductCard key={product.product_id} product={product} hasPrice={false} />
+          )
+        ))
+      )}
     </div>
-  }
-  
-  export default ProductList;
+  );
+};
+
+export default ProductList;

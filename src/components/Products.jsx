@@ -1,3 +1,6 @@
+/*
+BORRAR
+
 const Products = () => {
     return ([
         {
@@ -25,5 +28,4 @@ const Products = () => {
     }
     ])
 }
-
-export default Products;
+*/

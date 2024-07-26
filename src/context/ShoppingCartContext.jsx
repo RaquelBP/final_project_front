@@ -1,42 +1,47 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react'
 
-export const ShoppingCartContext = createContext();
+export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([])
 
   const addItem = (newItem) => {
     setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === newItem.id);
+      const existingItem = prevItems.find(item => item.product_id === newItem.product_id)
       if (existingItem) {
+        //console.log("existingItem");
         return prevItems.map(item =>
-          item.id === newItem.id
-            ? { ...item, amount: item.amount + 1, totalPrice: item.totalPrice + item.price }
+          item.product_id === newItem.product_id
+            ? { ...item, amount: item.amount + 1, total_price: item.total_price + Number(newItem.price), total_minutes: item.total_minutes + Number(newItem.minutes) }
             : item
         );
       } else {
-        return [...prevItems, { ...newItem, amount: 1, totalPrice: newItem.price }];
+        //console.log("newItem", newItem);
+        const totalPrice = Number(newItem.price)
+        const totalMinutes = Number(newItem.minutes)
+        return [...prevItems, { ...newItem, amount: 1, total_price: totalPrice, total_minutes: totalMinutes }]
       }
     });
   };
 
   const removeItem = (itemToRemove) => {
     setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === itemToRemove.id);
+      const existingItem = prevItems.find(item => item.product_id === itemToRemove.product_id)
       if (existingItem) {
         if (existingItem.amount > 1) {
           return prevItems.map(item =>
-            item.id === itemToRemove.id
-              ? { ...item, amount: item.amount - 1, totalPrice: item.totalPrice - item.price }
+            item.product_id === itemToRemove.product_id
+              ? { ...item, amount: item.amount - 1, total_price: item.total_price - Number(item.price), total_minutes: item.total_minutes - Number(item.minutes) }
               : item
           );
         } else {
-          return prevItems.filter(item => item.id !== itemToRemove.id);
+          return prevItems.filter(item => item.product_id !== itemToRemove.product_id)
         }
       }
-      return prevItems;
+      return prevItems
     });
   };
+  
 
   return (
     <ShoppingCartContext.Provider value={{ items, addItem, removeItem }}>
@@ -46,5 +51,5 @@ export const ShoppingCartProvider = ({ children }) => {
 };
 
 export const useShoppingCartContext = () => {
-  return useContext(ShoppingCartContext);
+  return useContext(ShoppingCartContext)
 };

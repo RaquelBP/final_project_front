@@ -5,24 +5,30 @@ import ProductButton from "./ProductButton";
 import RemoveButton from "./RemoveButton";
 
 const ProductCard = ({ product, hasPrice }) => {
+  if (!product) {
+    return <div>No product data</div>
+  }
+  
   const { items } = useShoppingCartContext();
-  const { user } = useSelector((state) => state.user);
+  //const { user } = useSelector((state) => state.user);
 
-  const cartItem = items.find(item => item.id === product.id) || { amount: 0 };
+  const cartItem = items.find(item => item.product_id === product.product_id) || { amount: 0 }
+  //console.log("CartItem:", cartItem)
+  //console.log(product.price)
 
   return (
-    <div className="card">
-      <Link to={`/product/${product.id}/`}>
-        <img className="cardImage" src={product.image} />
-        <p>{product.title}</p>
-        {hasPrice && <p>{product.price}</p>}
+    <div>
+      <Link to={`/product/${product.product_id}/`}>
+        <img className="cardImage" src={product.image_link} />
+        <p>{product.name}</p>
+        <p>{product.price}</p>
       </Link>
-      {user && <div>Solo hoy para ti, {user.name} a un 50% de descuento</div>}
+
       <ProductButton product={product} />
       <p>{cartItem.amount}</p>
       <RemoveButton product={product} />
     </div>
   );
-}
+};
 
-export default ProductCard;
+export default ProductCard

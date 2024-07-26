@@ -1,6 +1,7 @@
 const CartItem = ({item}) => {
+  console.log(item)
   return <div className="cart-item">
-    {`${item.title} - x${item.amount}............ ${item.price.toFixed(2)}€/ud  -  Total: ${item.totalPrice.toFixed(2)}€`}
+    {`${item.name} - x${item.amount}............ ${item.price}€/ud  -  Total: ${item.total_price.toFixed(2)}€`}
     
   </div>
 }
