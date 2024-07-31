@@ -17,15 +17,15 @@ const ProductCard = ({ product, hasPrice }) => {
   //console.log(product.price)
 
   return (
-    <div>
+    <div className="productCards">
       <Link to={`/product/${product.product_id}/`}>
         <img className="cardImage" src={product.image_link} />
-        <p>{product.name}</p>
-        <p>{product.price}</p>
+        <p className="nombreProducto">{product.name}</p>
+        <p>{product.price} €</p>
       </Link>
 
       <ProductButton product={product} />
-      <p>{cartItem.amount}</p>
+      <p className="cantidadProducto">Cantidad: {cartItem.amount}</p>
       <RemoveButton product={product} />
     </div>
   );

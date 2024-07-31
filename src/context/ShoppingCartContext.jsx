@@ -41,13 +41,17 @@ export const ShoppingCartProvider = ({ children }) => {
       return prevItems
     });
   };
+
+  const clearCart = () => {
+    setItems([]);
+};
   
 
-  return (
-    <ShoppingCartContext.Provider value={{ items, addItem, removeItem }}>
+return (
+  <ShoppingCartContext.Provider value={{ items, addItem, removeItem, clearCart }}>
       {children}
-    </ShoppingCartContext.Provider>
-  );
+  </ShoppingCartContext.Provider>
+);
 };
 
 export const useShoppingCartContext = () => {

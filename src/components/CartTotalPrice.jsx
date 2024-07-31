@@ -1,12 +1,16 @@
-import { useShoppingCartContext } from "../context/ShoppingCartContext"
+import { useShoppingCartContext } from "../context/ShoppingCartContext";
 
 const CartTotalPrice = () => {
-    const { items } = useShoppingCartContext()
-    console.log("Carrito:", items)
+    const { items } = useShoppingCartContext();
+    
+    const totalPrice = items.reduce((total, item) => total + item.total_price, 0).toFixed(2) //Precio total
 
-    const totalPrice = items.reduce((total, item) => total + item.total_price, 0).toFixed(2)
+    //Renderiza si el precio es mayor que 0
+    if (totalPrice <= 0) {
+        return null;
+    }
 
-    return <div>Precio: ${totalPrice}</div>
+    return <div> <strong>Total: {totalPrice}€ </strong></div>;
 }
 
-export default CartTotalPrice
+export default CartTotalPrice;

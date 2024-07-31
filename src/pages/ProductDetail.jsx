@@ -23,14 +23,13 @@ const ProductDetail = () => {
   console.log("AMOUNT:", product.amount)
 
   return (
-    <div>
-      <p><Link to="/">Volver al listado</Link></p>
+    <div className="page details">
+      <Link to="/" className="backLink"><p className="backP">Volver al listado</p></Link>
       <img className="detailImage" src={product?.image_link} />
-      <p>{product?.name}</p>
-      <p>{product?.price}€</p>
+      <p className="nombreProducto">{product?.name}</p>
+      <p>{product?.price} €</p>
       <p>{product?.description}</p>
-      <p>{product?.category}</p>
-      {product?.amount !== undefined ? <p>{product.amount}</p> : <p>No disponible</p>}
+      <p>Categoría: {product?.category}</p>
     </div>
   );
 }

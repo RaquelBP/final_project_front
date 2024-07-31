@@ -1,28 +1,22 @@
-//import useAuth from "../hooks/useAuth";
-import { useSelector, useDispatch} from "react-redux";
-import { login, logout } from '../redux/userSlice';
-
-const Auth = () => {
-    //const { user, token, login, logout } = useAuth();
-    const {user} = useSelector((state) => state.user);
-    const dispatch = useDispatch();
-
-    const handleLogin = () => {
-      dispatch(login('raquel128312', 'password123'));
-    };
-
-    return (
-      <div>
-        {user ? (
-          <div>
-            <p>Welcome, {user.name}!</p>
-            <button onClick={() => dispatch(logout())}>Logout</button>
-          </div>
-        ) : (
-          <button onClick={handleLogin}>Login</button>
-        )}
-      </div>
-    );
-}
-
-export default Auth;
+// auth.js (o cualquier archivo donde tengas funciones de autenticación)
+export const authenticateUser = async (email, password) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Authentication failed');
+    }
+    
+    const data = await response.json();
+    return data; // Suponiendo que el backend devuelve los datos del usuario
+  } catch (error) {
+    console.error('Error during authentication:', error);
+    throw error;
+  }
+};
