@@ -14,14 +14,19 @@ const AdminDashboard = () => {
   if (ordersLoading || productsLoading) return <div>Cargando...</div>
   if (ordersError || productsError) return <div>Error: {ordersError || productsError}</div>
 
+  
   const handleOrderFormSubmit = async (data) => {
+
     if (orderFormData) {
-      await updateOrder(orderFormData.order_id, data);
-    } else {
-      await createOrder(data);
+      await updateOrder(orderFormData.order_id, data)
     }
-    setShowOrderForm(false);
-    setOrderFormData(null);
+    
+    else {
+      await createOrder(data)
+    }
+    
+    setShowOrderForm(false)
+    setOrderFormData(null)
   }
 
 

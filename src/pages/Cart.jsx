@@ -17,10 +17,10 @@ const Cart = () => {
         if (!e.target.checked) {
             setEmail("")
         }
-    };
+    }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (emailChecked && email === "") {
             alert("Por favor, introduce tu email.")
@@ -50,7 +50,7 @@ const Cart = () => {
             setOrderSuccess(true)
 
             //Vaciar el carrito después de la confirmación del pedido (desde el CartContext)
-            clearCart();
+            clearCart()
 
             //Temporizador y redirge después de 5 segs
             const interval = setInterval(() => {
@@ -60,8 +60,8 @@ const Cart = () => {
                         return 0
                     }
                     return tiempo - 1
-                });
-            }, 1000);
+                })
+            }, 1000)
 
             setTimeout(() => {
                 navigate("/")
@@ -71,7 +71,7 @@ const Cart = () => {
             console.error('Error:', error)
             alert('There was an error creating the order')
         }
-    };
+    }
 
     return (
         <div className="cart page">
@@ -111,7 +111,7 @@ const Cart = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default Cart;
+export default Cart

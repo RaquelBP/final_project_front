@@ -1,11 +1,9 @@
-import ProductCard from "../components/ProductCard";
-import useProducts from "../hooks/useProducts";
-import { Link, useParams } from "react-router-dom";
+import ProductCard from "../components/ProductCard"
+import useProducts from "../hooks/useProducts"
+import { Link } from "react-router-dom"
 
 const ProductList = () => {
   const products = useProducts()
-  console.log("Productos:", products)
-  //console.log("id:", products[0].product_id)
 
   return (
     <div className="page">
@@ -23,7 +21,7 @@ const ProductList = () => {
       </div>
       <Link to="/cart" className="backLink"><p className="backP">Carrito </p></Link>
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList

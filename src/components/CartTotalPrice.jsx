@@ -1,4 +1,4 @@
-import { useShoppingCartContext } from "../context/ShoppingCartContext";
+import { useShoppingCartContext } from "../context/ShoppingCartContext"
 
 const CartTotalPrice = () => {
     const { items } = useShoppingCartContext();
@@ -7,10 +7,10 @@ const CartTotalPrice = () => {
 
     //Renderiza si el precio es mayor que 0
     if (totalPrice <= 0) {
-        return null;
+        return null
     }
 
-    return <div> <strong>Total: {totalPrice}€ </strong></div>;
+    return <div> <strong>Total: {totalPrice}€ </strong></div>
 }
 
-export default CartTotalPrice;
+export default CartTotalPrice

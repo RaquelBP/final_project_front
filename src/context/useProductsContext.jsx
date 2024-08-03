@@ -17,4 +17,4 @@ export const useProductContext = () => {
   return useContext(ProductContext)
 }
 
-export { ProductContext };
+export { ProductContext }

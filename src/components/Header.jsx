@@ -1,20 +1,11 @@
-import { useShoppingCartContext } from "../context/ShoppingCartContext";
-import { Link } from "react-router-dom";
-import CartTotalPrice from "./CartTotalPrice";
-import { useState } from "react";
+import { useShoppingCartContext } from "../context/ShoppingCartContext"
+import { Link } from "react-router-dom"
+import CartTotalPrice from "./CartTotalPrice"
 
 const Header = () => {
-  //const [isLogin, setIsLogin] = useState(false) //Variable para controlar si mostrar o no el login??? Igual se puede coger de Login.jsx????
 
   const {items} = useShoppingCartContext();
   const totalAmount = items.reduce((total, item) => total + item.amount, 0)
-
-  /*
-  const showLogin = ()=>{
-    setIsLogin(!isLogin)
-
-  }
-  */
 
 
   return <>

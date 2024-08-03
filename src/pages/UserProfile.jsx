@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { useUser } from '../context/UserContext'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const UserProfile = () => {
   const { user, logout } = useUser()
 
-  console.log("UserProfile user:", user)
+
   return (
     <div className='profile page'>
       <h1>Perfil del Usuario</h1>
@@ -20,7 +20,7 @@ const UserProfile = () => {
       )}
       
     </div>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile
