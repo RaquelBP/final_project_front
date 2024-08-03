@@ -1,4 +1,3 @@
-// auth.js (o cualquier archivo donde tengas funciones de autenticación)
 export const authenticateUser = async (email, password) => {
   try {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/login`, {
@@ -7,16 +6,16 @@ export const authenticateUser = async (email, password) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-    });
+    })
     
     if (!response.ok) {
-      throw new Error('Authentication failed');
+      throw new Error('Authentication failed')
     }
     
-    const data = await response.json();
-    return data; // Suponiendo que el backend devuelve los datos del usuario
+    const data = await response.json()
+    return data
   } catch (error) {
-    console.error('Error during authentication:', error);
-    throw error;
+    console.error('Error during authentication:', error)
+    throw error
   }
 };
