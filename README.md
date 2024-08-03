@@ -7,6 +7,12 @@ This project is the frontend for a burger store, developed as part of a Full Sta
 - Node.js (v20.12.2)
 - npm (v10.5.0)
 - Vite
+
+## Environment Variables
+To run this project, you will need to add the following environment variables to your .env file:
+
+- `VITE_BASE_URL`
+
 ## Installation
 
 Clone the project
@@ -32,4 +38,3 @@ Start the server
 ```bash
   npm run dev
 ```
-
